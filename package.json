@@ -1,0 +1,25 @@
+{
+  "name": "redux-crud-essentials",
+  "version": "0.0.0",
+  "description": "A specialized functional factory to construct elemental CRUD operation's facilities for Redux implementations.",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/NeaSTDL/redux-crud.git"
+  },
+  "keywords": [
+    "redux",
+    "crud",
+    "essentials",
+    "factory"
+  ],
+  "author": "Emir Salazar",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/NeaSTDL/redux-crud/issues"
+  },
+  "homepage": "https://github.com/NeaSTDL/redux-crud#readme"
+}
