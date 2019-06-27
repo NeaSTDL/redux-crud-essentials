@@ -4,7 +4,8 @@
   "description": "A specialized functional factory to construct elemental CRUD operation's facilities for Redux implementations.",
   "main": "index.js",
   "scripts": {
-    "test": "xo && jest --passWithNoTests"
+    "test": "xo && jest --passWithNoTests",
+    "build": "yarn test && webpack --mode production"
   },
   "repository": {
     "type": "git",
@@ -23,7 +24,23 @@
   },
   "homepage": "https://github.com/NeaSTDL/redux-crud#readme",
   "devDependencies": {
+    "@babel/core": "^7.4.5",
+    "@babel/preset-env": "^7.4.5",
+    "babel-jest": "^24.8.0",
     "jest": "^24.8.0",
+    "webpack": "^4.35.0",
+    "webpack-cli": "^3.3.5",
     "xo": "^0.24.0"
+  },
+  "dependencies": {},
+  "xo": {
+    "space": 2,
+    "globals": [
+      "test",
+      "expect"
+    ],
+    "prettier": {
+      "trailingComma": "all"
+    }
   }
 }
