@@ -1,0 +1,69 @@
+{
+  "name": "redux-crud-essentials",
+  "version": "0.0.0",
+  "description": "A specialized functional factory to construct elemental CRUD operation's facilities for Redux implementations.",
+  "main": "dist/main.js",
+  "scripts": {
+    "test": "xo && jest --passWithNoTests",
+    "test:watch": "jest --watch",
+    "build": "yarn test && webpack --config webpack.config.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/NeaSTDL/redux-crud.git"
+  },
+  "keywords": [
+    "redux",
+    "crud",
+    "essentials",
+    "factory"
+  ],
+  "author": "Emir Salazar",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/NeaSTDL/redux-crud/issues"
+  },
+  "homepage": "https://github.com/NeaSTDL/redux-crud#readme",
+  "devDependencies": {
+    "@babel/core": "^7.4.5",
+    "@babel/preset-env": "^7.4.5",
+    "babel-jest": "^24.8.0",
+    "jest": "^24.8.0",
+    "webpack": "^4.35.0",
+    "webpack-cli": "^3.3.5",
+    "xo": "^0.24.0"
+  },
+  "dependencies": {
+    "lodash": "^4.17.11",
+    "redux-actions": "^2.6.5",
+    "reselect": "^4.0.0"
+  },
+  "xo": {
+    "space": 2,
+    "globals": [
+      "test",
+      "expect",
+      "describe",
+      "beforeEach"
+    ],
+    "prettier": {
+      "trailingComma": "all"
+    },
+    "plugins": [
+      "unicorn"
+    ],
+    "rules": {
+      "unicorn/filename-case": [
+        "error",
+        {
+          "case": "camelCase"
+        }
+      ],
+      "max-len": [
+        "error",
+        100,
+        2
+      ]
+    }
+  }
+}
