@@ -2,10 +2,11 @@
   "name": "redux-crud-essentials",
   "version": "0.0.0",
   "description": "A specialized functional factory to construct elemental CRUD operation's facilities for Redux implementations.",
-  "main": "index.js",
+  "main": "dist/main.js",
   "scripts": {
     "test": "xo && jest --passWithNoTests",
-    "build": "yarn test && webpack --mode production"
+    "test:watch": "jest --watch",
+    "build": "yarn test && webpack --config webpack.config.js"
   },
   "repository": {
     "type": "git",
@@ -32,15 +33,37 @@
     "webpack-cli": "^3.3.5",
     "xo": "^0.24.0"
   },
-  "dependencies": {},
+  "dependencies": {
+    "lodash": "^4.17.11",
+    "redux-actions": "^2.6.5",
+    "reselect": "^4.0.0"
+  },
   "xo": {
     "space": 2,
     "globals": [
       "test",
-      "expect"
+      "expect",
+      "describe",
+      "beforeEach"
     ],
     "prettier": {
       "trailingComma": "all"
+    },
+    "plugins": [
+      "unicorn"
+    ],
+    "rules": {
+      "unicorn/filename-case": [
+        "error",
+        {
+          "case": "camelCase"
+        }
+      ],
+      "max-len": [
+        "error",
+        100,
+        2
+      ]
     }
   }
 }
