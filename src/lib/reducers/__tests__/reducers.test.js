@@ -69,7 +69,7 @@ describe('That the reducer factory constructs all reducers as intended.', () => 
         },
         {
           type: 'fruits/DELETE',
-          payload: 2
+          payload: [2]
         }
       )
     ).toEqual({

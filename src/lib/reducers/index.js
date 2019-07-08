@@ -7,7 +7,9 @@ export function setOperation(state, {payload}) {
 }
 
 export function unsetOperation(state, {payload}) {
-  return omit(state, [`entities.${payload}`]);
+  if (!Array.isArray(payload))
+    throw new Error('[RDXC]: "payload" is not an array.');
+  return omit(state, payload.map(entityId => `entities.${entityId}`));
 }
 
 export function reducersFor(entityName, namespace) {
