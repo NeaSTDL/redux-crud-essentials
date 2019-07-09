@@ -6,8 +6,11 @@ import {createSelector} from 'reselect';
  * @returns {function} A function that will receive the state as a parameter to return the
  * selected entities.
  */
-export function createAllSelectorFor(entityName) {
-  return state => state[entityName].entities;
+export function createAllSelectedIdsSelectorFor(entityName) {
+  return state =>
+    state[entityName].selectedIds.map(
+      selectedId => state[entityName].entities[selectedId]
+    );
 }
 
 /**
@@ -16,9 +19,9 @@ export function createAllSelectorFor(entityName) {
  * @returns {function} A memoized-improved selector function to retrieve all entities in an Array
  * format.
  */
-export default function All(entityName) {
+export default function AllSelected(entityName) {
   return createSelector(
-    [createAllSelectorFor(entityName)],
-    entities => Object.keys(entities).map(entity => entities[entity])
+    [createAllSelectedIdsSelectorFor(entityName)],
+    entities => entities
   );
 }

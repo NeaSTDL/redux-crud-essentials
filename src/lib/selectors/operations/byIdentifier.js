@@ -16,11 +16,11 @@ export function createByIdentifierSelectorFor(entityName, identifierName) {
  * @param {object} options A configuration object to modify the selector behavior.
  * @returns {function} A memoized-improved selector function to be used for store values selection.
  */
-// [TODO] Construir una fabrica para este selector
 export default function byIdentifier(entityName, options) {
   const {identifierName} = options;
-  return createSelector(
-    [createByIdentifierSelectorFor(entityName, identifierName)],
-    entity => entity
-  );
+  return () =>
+    createSelector(
+      [createByIdentifierSelectorFor(entityName, identifierName)],
+      entity => entity
+    );
 }
