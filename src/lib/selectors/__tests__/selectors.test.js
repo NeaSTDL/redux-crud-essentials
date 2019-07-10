@@ -6,7 +6,8 @@ const dummyState = {
       1: {id: 1, name: 'apple'},
       2: {id: 2, name: 'orange'},
       3: {id: 3, name: 'banana'}
-    }
+    },
+    selectedIds: []
   }
 };
 
@@ -31,8 +32,28 @@ describe('That the selector factories perform as intended.', () => {
     ]);
   });
 
+  test(`The instanced "allSelected" selector returns all values from the store in an array format
+  `, () => {
+    const fruitsListAsArray = fromFruitsSelect.allSelected(dummyState);
+    expect(Array.isArray(fruitsListAsArray)).toBeTruthy();
+    expect(fruitsListAsArray).toEqual([]);
+  });
+
+  test(`The instanced "allSelected" selector returns all values from the store in an array format
+  `, () => {
+    const fruitsListAsArray = fromFruitsSelect.allSelected({
+      fruits: {...dummyState.fruits, selectedIds: [1, 2]}
+    });
+    expect(Array.isArray(fruitsListAsArray)).toBeTruthy();
+    expect(fruitsListAsArray).toEqual([
+      {id: 1, name: 'apple'},
+      {id: 2, name: 'orange'}
+    ]);
+  });
+
   test('The "byIdentified" selector, an specific item is fetched', () => {
-    expect(fromFruitsSelect.byIdentifier(dummyState, {id: 1})).toEqual({
+    const selectByIdForTest = fromFruitsSelect.byIdentifier();
+    expect(selectByIdForTest(dummyState, {id: 1})).toEqual({
       id: 1,
       name: 'apple'
     });

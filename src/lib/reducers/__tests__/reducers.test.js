@@ -1,71 +1,59 @@
-import defaultState from '../defaultState';
+import defaultState from '../../constants/defaultState';
 import {reducersFor} from '..';
 
-describe('That the reducer factory constructs all reducers as intended.', () => {
-  const reducers = reducersFor('fruits');
+describe('About the "entities" reducer factory.', () => {
+  const {entitiesReducers} = reducersFor('fruits');
 
-  test('That CREATE reducer adds an item on a blank state correctly.', () => {
+  test('That its CREATE reducer adds an item on a blank state correctly.', () => {
     expect(
-      reducers(defaultState, {
+      entitiesReducers(defaultState.entities, {
         type: 'fruits/CREATE',
-        payload: {entities: {1: {id: 1, name: 'banana', color: 'yellow'}}}
+        payload: {1: {id: 1, name: 'banana', color: 'yellow'}}
       })
     ).toEqual({
-      entities: {
-        1: {id: 1, name: 'banana', color: 'yellow'}
-      }
+      1: {id: 1, name: 'banana', color: 'yellow'}
     });
   });
 
-  test('That CREATE reducer adds an item on a pre-filled state correctly.', () => {
+  test('That its CREATE reducer adds an item on a pre-filled state correctly.', () => {
     expect(
-      reducers(
+      entitiesReducers(
         {
-          entities: {
-            1: {id: 1, name: 'banana', color: 'yellow'}
-          }
+          1: {id: 1, name: 'banana', color: 'yellow'}
         },
         {
           type: 'fruits/CREATE',
-          payload: {entities: {2: {id: 2, name: 'apple', color: 'red'}}}
+          payload: {2: {id: 2, name: 'apple', color: 'red'}}
         }
       )
     ).toEqual({
-      entities: {
-        1: {id: 1, name: 'banana', color: 'yellow'},
-        2: {id: 2, name: 'apple', color: 'red'}
-      }
+      1: {id: 1, name: 'banana', color: 'yellow'},
+      2: {id: 2, name: 'apple', color: 'red'}
     });
   });
 
-  test('That UPDATE reducer updates an existing item correctly on a filled state.', () => {
+  test('That its UPDATE reducer updates an existing item correctly on a filled state.', () => {
     expect(
-      reducers(
+      entitiesReducers(
         {
-          entities: {
-            1: {id: 1, name: 'banana', color: 'yellow'}
-          }
+          1: {id: 1, name: 'banana', color: 'yellow'}
         },
         {
           type: 'fruits/UPDATE',
-          payload: {entities: {1: {id: 1, name: 'pear', color: 'green'}}}
+          payload: {1: {id: 1, name: 'pear', color: 'green'}}
         }
       )
     ).toEqual({
-      entities: {
-        1: {id: 1, name: 'pear', color: 'green'}
-      }
+      1: {id: 1, name: 'pear', color: 'green'}
     });
   });
 
-  test('That DELETE reducer removes an existing item correctly on a filled state.', () => {
+  test('That its DELETE reducer removes an existing item correctly on a filled state.', () => {
     expect(
-      reducers(
+      entitiesReducers(
         {
-          entities: {
-            1: {id: 1, name: 'banana', color: 'yellow'},
-            2: {id: 2, name: 'apple', color: 'red'}
-          }
+          1: {id: 1, name: 'banana', color: 'yellow'},
+          2: {id: 2, name: 'apple', color: 'red'}
         },
         {
           type: 'fruits/DELETE',
@@ -73,9 +61,60 @@ describe('That the reducer factory constructs all reducers as intended.', () => 
         }
       )
     ).toEqual({
-      entities: {
-        1: {id: 1, name: 'banana', color: 'yellow'}
-      }
+      1: {id: 1, name: 'banana', color: 'yellow'}
     });
+  });
+});
+
+describe('About the "selectedIds" reducer factory.', () => {
+  const {selectedIdsReducers} = reducersFor('fruits');
+
+  test('That its ADD reducer sets the corresponding ID(s) on the state.', () => {
+    expect(
+      selectedIdsReducers([], {
+        type: 'fruits/ADD_SELECTED',
+        payload: [1],
+        meta: {position: 'end'}
+      })
+    ).toEqual([1]);
+  });
+
+  test('That its ADD reducer sets the corresponding ID(s) on the state.', () => {
+    expect(
+      selectedIdsReducers([1, 2], {
+        type: 'fruits/ADD_SELECTED',
+        payload: [3],
+        meta: {position: 'end'}
+      })
+    ).toEqual([1, 2, 3]);
+  });
+
+  test('That its ADD reducer sets the corresponding ID(s) on the state.', () => {
+    expect(
+      selectedIdsReducers([], {
+        type: 'fruits/ADD_SELECTED',
+        payload: [1],
+        meta: {position: 'start'}
+      })
+    ).toEqual([1]);
+  });
+
+  test('That its ADD reducer sets the corresponding ID(s) on the state.', () => {
+    expect(
+      selectedIdsReducers([1, 2], {
+        type: 'fruits/ADD_SELECTED',
+        payload: [3],
+        meta: {position: 'start'}
+      })
+    ).toEqual([3, 1, 2]);
+  });
+
+  test('That its REMOVE reducer unsets the corresponding ID(s) on the state.', () => {
+    expect(
+      selectedIdsReducers([1, 2, 3], {
+        type: 'fruits/REMOVE_SELECTED',
+        payload: [2]
+      })
+    ).toEqual([1, 3]);
   });
 });
