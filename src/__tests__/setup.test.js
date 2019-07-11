@@ -1,7 +1,7 @@
 import createReduxCrud from '..';
 
-describe('About the Redux CRUD factory setup process.', () => {
-  test(`That it throws an exception when passed a non-undefined, non-string or non-object value as 
+describe('The Redux CRUD factory', () => {
+  it(`Throws an exception when passed a non-undefined, non-string or non-object value as
   parameter.`, () => {
     expect(createReduxCrud).not.toThrow();
     expect(() => createReduxCrud(1)).toThrow();
@@ -10,23 +10,40 @@ describe('About the Redux CRUD factory setup process.', () => {
     expect(() => createReduxCrud('')).toThrow();
   });
 
-  test('That it returns a manager function when passed a string as parameter.', () => {
+  it('Returns a manager function when passed a string as parameter.', () => {
     const n9ReduxCrudManager = createReduxCrud('nimbus9');
     const fruitsManager = n9ReduxCrudManager('fruits');
     expect(typeof n9ReduxCrudManager).toEqual('function');
+    expect(fruitsManager).toHaveProperty('actionTypes');
     expect(fruitsManager).toHaveProperty('actionCreators');
     expect(fruitsManager).toHaveProperty('selectors');
     expect(fruitsManager).toHaveProperty('reducers');
   });
 
-  test('That it returns a wrapper object when passed an object as parameter.', () => {
+  it(`Returns a manager function when passed an object without a valid "entityName" property as
+  parameter.`, () => {
     const n9ReduxCrudManager = createReduxCrud({
+      namespace: 'nimbus9',
+      identifier: '_id'
+    });
+    const fruitsManager = n9ReduxCrudManager('fruits');
+    expect(typeof n9ReduxCrudManager).toEqual('function');
+    expect(fruitsManager).toHaveProperty('actionTypes');
+    expect(fruitsManager).toHaveProperty('actionCreators');
+    expect(fruitsManager).toHaveProperty('selectors');
+    expect(fruitsManager).toHaveProperty('reducers');
+  });
+
+  it(`Returns an utilities object when passed an object with a valid "entityName" property as
+  parameter.`, () => {
+    const fruitsManager = createReduxCrud({
       namespace: 'nimbus9',
       entityName: 'fruits'
     });
-    expect(typeof n9ReduxCrudManager).toEqual('object');
-    expect(n9ReduxCrudManager).toHaveProperty('actionCreators');
-    expect(n9ReduxCrudManager).toHaveProperty('selectors');
-    expect(n9ReduxCrudManager).toHaveProperty('reducers');
+    expect(typeof fruitsManager).toEqual('object');
+    expect(fruitsManager).toHaveProperty('actionTypes');
+    expect(fruitsManager).toHaveProperty('actionCreators');
+    expect(fruitsManager).toHaveProperty('selectors');
+    expect(fruitsManager).toHaveProperty('reducers');
   });
 });
