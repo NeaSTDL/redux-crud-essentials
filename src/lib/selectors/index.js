@@ -1,15 +1,12 @@
+import defaultOpts from '../constants/defaultOptions';
 import createAllSelector from './operations/all';
 import createByIdentifierSelector from './operations/byIdentifier';
 import createAllSelectedIdsSelector from './operations/allSelected';
 
-const defaultOpts = {
-  identifierName: 'id'
-};
-
-export function selectorsFor(entityType, opts = defaultOpts) {
+export function selectorsFor(entityName, opts = defaultOpts) {
   return {
-    all: createAllSelector(entityType, opts),
-    allSelected: createAllSelectedIdsSelector(entityType, opts),
-    byIdentifier: createByIdentifierSelector(entityType, opts)
+    all: createAllSelector(entityName, opts),
+    allSelected: createAllSelectedIdsSelector(entityName, opts),
+    byIdentifier: createByIdentifierSelector(entityName, opts)
   };
 }
