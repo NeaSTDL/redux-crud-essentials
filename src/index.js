@@ -1,6 +1,7 @@
 import {actionCreatorsFor} from './lib/actionCreators';
 import {selectorsFor} from './lib/selectors';
 import {reducersFor} from './lib/reducers';
+import {actionTypesFor} from './lib/actionTypes';
 
 export function createManager(namespace) {
   return entityName => {
@@ -9,6 +10,7 @@ export function createManager(namespace) {
         "[ReduxCrud] You must pass 'entityName' as a valid non-empty string!"
       );
     return {
+      actionTypes: actionTypesFor(entityName, namespace),
       actionCreators: actionCreatorsFor(entityName, namespace),
       reducers: reducersFor(entityName, namespace),
       selectors: selectorsFor(entityName)

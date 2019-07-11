@@ -44,7 +44,8 @@
       "test",
       "expect",
       "describe",
-      "beforeEach"
+      "beforeEach",
+      "it"
     ],
     "prettier": {
       "trailingComma": "all"
