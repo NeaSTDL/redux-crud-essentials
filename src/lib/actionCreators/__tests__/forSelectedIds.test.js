@@ -2,11 +2,11 @@ import {actionCreatorsFor} from '..';
 
 describe('The actionCreator functions for "selectedIds" store', () => {
   describe('created with a NULL "namespace"', () => {
-    const forEntity = actionCreatorsFor('fruits');
+    const fruitsActions = actionCreatorsFor('fruits');
     describe('construct an ADD_SELECTED action creator function', () => {
       test(`that returns a valid action given an entity object to append the end of the 
       selectedIds list.`, () => {
-        expect(forEntity.fruits.addSelected({id: 1, name: 'banana'})).toEqual({
+        expect(fruitsActions.addSelected({id: 1, name: 'banana'})).toEqual({
           type: 'fruits/ADD_SELECTED',
           payload: [1],
           meta: {position: 'end'}
@@ -15,7 +15,7 @@ describe('The actionCreator functions for "selectedIds" store', () => {
       test(`that returns a valid action given an entity object to append the end of the 
       selectedIds list.`, () => {
         expect(
-          forEntity.fruits.addSelected({id: 1, name: 'banana'}, 'start')
+          fruitsActions.addSelected({id: 1, name: 'banana'}, 'start')
         ).toEqual({
           type: 'fruits/ADD_SELECTED',
           payload: [1],
@@ -25,7 +25,7 @@ describe('The actionCreator functions for "selectedIds" store', () => {
       test(`that returns a valid action given an entities array to append the end of the 
       selectedIds list.`, () => {
         expect(
-          forEntity.fruits.addSelected([
+          fruitsActions.addSelected([
             {id: 1, name: 'banana'},
             {id: 2, name: 'pear'}
           ])
@@ -38,7 +38,7 @@ describe('The actionCreator functions for "selectedIds" store', () => {
       test(`that returns a valid action given an entities array to append the end of the 
       selectedIds list.`, () => {
         expect(
-          forEntity.fruits.addSelected(
+          fruitsActions.addSelected(
             [{id: 1, name: 'banana'}, {id: 2, name: 'pear'}],
             'start'
           )
@@ -52,9 +52,7 @@ describe('The actionCreator functions for "selectedIds" store', () => {
     describe('construct a REMOVE_SELECTED action creator function', () => {
       test(`that returns a valid action given an entity object to remove from the 
       selectedIds list.`, () => {
-        expect(
-          forEntity.fruits.removeSelected({id: 1, name: 'banana'})
-        ).toEqual({
+        expect(fruitsActions.removeSelected({id: 1, name: 'banana'})).toEqual({
           type: 'fruits/REMOVE_SELECTED',
           payload: [1]
         });
@@ -62,7 +60,7 @@ describe('The actionCreator functions for "selectedIds" store', () => {
       test(`that returns a valid action given an array of entities' IDs to remove from the 
         selectedIds list.`, () => {
         expect(
-          forEntity.fruits.removeSelected([
+          fruitsActions.removeSelected([
             {id: 1, name: 'banana'},
             {id: 2, name: 'pear'}
           ])
@@ -74,11 +72,13 @@ describe('The actionCreator functions for "selectedIds" store', () => {
     });
   });
   describe('created with a non-NULL identifier', () => {
-    const forEntity = actionCreatorsFor('fruits', null, {identifier: '_id'});
+    const fruitsActions = actionCreatorsFor('fruits', null, {
+      identifier: '_id'
+    });
     describe('construct an ADD_SELECTED action creator function', () => {
       test(`that returns a valid action given an entity object to append the end of the 
       selectedIds list.`, () => {
-        expect(forEntity.fruits.addSelected({_id: 1, name: 'banana'})).toEqual({
+        expect(fruitsActions.addSelected({_id: 1, name: 'banana'})).toEqual({
           type: 'fruits/ADD_SELECTED',
           payload: [1],
           meta: {position: 'end'}
@@ -87,7 +87,7 @@ describe('The actionCreator functions for "selectedIds" store', () => {
       test(`that returns a valid action given an entity object to append the end of the 
       selectedIds list.`, () => {
         expect(
-          forEntity.fruits.addSelected({_id: 1, name: 'banana'}, 'start')
+          fruitsActions.addSelected({_id: 1, name: 'banana'}, 'start')
         ).toEqual({
           type: 'fruits/ADD_SELECTED',
           payload: [1],
@@ -97,7 +97,7 @@ describe('The actionCreator functions for "selectedIds" store', () => {
       test(`that returns a valid action given an entities array to append the end of the 
       selectedIds list.`, () => {
         expect(
-          forEntity.fruits.addSelected([
+          fruitsActions.addSelected([
             {_id: 1, name: 'banana'},
             {_id: 2, name: 'pear'}
           ])
@@ -110,7 +110,7 @@ describe('The actionCreator functions for "selectedIds" store', () => {
       test(`that returns a valid action given an entities array to append the end of the 
       selectedIds list.`, () => {
         expect(
-          forEntity.fruits.addSelected(
+          fruitsActions.addSelected(
             [{_id: 1, name: 'banana'}, {_id: 2, name: 'pear'}],
             'start'
           )
@@ -124,9 +124,7 @@ describe('The actionCreator functions for "selectedIds" store', () => {
     describe('construct a REMOVE_SELECTED action creator function', () => {
       test(`that returns a valid action given an entity object to remove from the selectedIds list.
       `, () => {
-        expect(
-          forEntity.fruits.removeSelected({_id: 1, name: 'banana'})
-        ).toEqual({
+        expect(fruitsActions.removeSelected({_id: 1, name: 'banana'})).toEqual({
           type: 'fruits/REMOVE_SELECTED',
           payload: [1]
         });
@@ -134,7 +132,7 @@ describe('The actionCreator functions for "selectedIds" store', () => {
       test(`that returns a valid action given an array of entities' IDs to remove from the 
         selectedIds list.`, () => {
         expect(
-          forEntity.fruits.removeSelected([
+          fruitsActions.removeSelected([
             {_id: 1, name: 'banana'},
             {_id: 2, name: 'pear'}
           ])

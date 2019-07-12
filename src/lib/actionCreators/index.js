@@ -40,6 +40,13 @@ const selectedIdsStoreActionsCreators = identifier => ({
     toEntitiesIDArray(payload, identifier)
 });
 
+/**
+ * A factory to create a set of action creator functions for a specific Redux entity.
+ * @param {string} entityName A name for the entity to be used with the returned action creators.
+ * @param {string} namespace An optional name for a expected namespace for the action types.
+ * @param {object} options A configuration settings collection to modify the library behavior.
+ * @returns {object} A set of action creator functions for a specific Redux entity.
+ */
 export function actionCreatorsFor(
   entityName,
   namespace,
@@ -52,6 +59,10 @@ export function actionCreatorsFor(
       ...selectedIdsStoreActionsCreators(identifier)
     }
   };
-  if (namespace) return createActions({[namespace]: entityActionMap});
-  return createActions(entityActionMap);
+  const entityActionCreators = namespace
+    ? createActions({[namespace]: entityActionMap})
+    : createActions(entityActionMap);
+  return namespace
+    ? entityActionCreators[namespace][entityName]
+    : entityActionCreators[entityName];
 }
