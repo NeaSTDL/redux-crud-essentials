@@ -1,6 +1,6 @@
 import {actionTypesFor} from '..';
 
-describe('"actionTypesFor" factory function', () => {
+describe('The "actionTypesFor" factory function', () => {
   it('returns a correct actionTypes set when given an entity name.', () => {
     expect(actionTypesFor('person')).toEqual({
       ADD_SELECTED: 'person/ADD_SELECTED',

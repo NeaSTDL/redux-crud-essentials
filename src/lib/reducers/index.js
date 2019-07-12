@@ -13,7 +13,8 @@ export function omitFromObjectState(state, action) {
 }
 
 export function addToArrayState(state, action) {
-  if (action.meta.position === 'start') return concat(action.payload, state);
+  if (action.meta && action.meta.position === 'start')
+    return concat(action.payload, state);
   return concat(state, action.payload);
 }
 
