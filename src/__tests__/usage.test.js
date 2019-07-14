@@ -18,9 +18,7 @@ describe('About the Redux CRUD factory actions/reducer usage.', () => {
 
   test('That the CREATE action works together with the target reducer on an object input.', () => {
     const {
-      actionCreators: {
-        nimbus9: {fruits: actions}
-      },
+      actionCreators: actions,
       reducers: {entitiesReducers}
     } = createEssentialsFor('fruits');
     expect(
@@ -42,9 +40,7 @@ describe('About the Redux CRUD factory actions/reducer usage.', () => {
 
   test('That the CREATE action works together with the target reducer on an array input.', () => {
     const {
-      actionCreators: {
-        nimbus9: {fruits: actions}
-      },
+      actionCreators: actions,
       reducers: {entitiesReducers}
     } = createEssentialsFor('fruits');
     expect(
@@ -74,9 +70,7 @@ describe('About the Redux CRUD factory actions/reducer usage.', () => {
 
   test('That the UPDATE action works together with the target reducer on an object input.', () => {
     const {
-      actionCreators: {
-        nimbus9: {fruits: actions}
-      },
+      actionCreators: actions,
       reducers: {entitiesReducers}
     } = createEssentialsFor('fruits');
     expect(
@@ -97,9 +91,7 @@ describe('About the Redux CRUD factory actions/reducer usage.', () => {
 
   test('That the UPDATE action works together with the target reducer on an array input.', () => {
     const {
-      actionCreators: {
-        nimbus9: {fruits: actions}
-      },
+      actionCreators: actions,
       reducers: {entitiesReducers}
     } = createEssentialsFor('fruits');
     expect(
@@ -133,7 +125,7 @@ describe('About the Redux CRUD factory actions/reducer usage.', () => {
     expect(
       entitiesReducers(
         testState.fruits.entities,
-        actionsFor.nimbus9.fruits.delete({
+        actionsFor.delete({
           id: 1,
           name: 'pear',
           color: 'greem'
@@ -153,7 +145,7 @@ describe('About the Redux CRUD factory actions/reducer usage.', () => {
     expect(
       entitiesReducers(
         testState.fruits.entities,
-        actionsFor.nimbus9.fruits.delete([
+        actionsFor.delete([
           {
             id: 1,
             name: 'pear',
@@ -174,9 +166,7 @@ describe('About the Redux CRUD factory actions/reducer usage.', () => {
   test(`That the ADD_SELECTED action works together with the target reducer on an object input.
   `, () => {
     const {
-      actionCreators: {
-        nimbus9: {fruits: actions}
-      },
+      actionCreators: actions,
       reducers: {selectedIdsReducers}
     } = createEssentialsFor('fruits');
     expect(
@@ -190,9 +180,7 @@ describe('About the Redux CRUD factory actions/reducer usage.', () => {
   test(`That the ADD_SELECTED action works together with the target reducer on an object input.
   `, () => {
     const {
-      actionCreators: {
-        nimbus9: {fruits: actions}
-      },
+      actionCreators: actions,
       reducers: {selectedIdsReducers}
     } = createEssentialsFor('fruits');
     expect(
@@ -212,9 +200,7 @@ describe('About the Redux CRUD factory actions/reducer usage.', () => {
   test(`That the ADD_SELECTED action works together with the target reducer on an array input.
   `, () => {
     const {
-      actionCreators: {
-        nimbus9: {fruits: actions}
-      },
+      actionCreators: actions,
       reducers: {selectedIdsReducers}
     } = createEssentialsFor('fruits');
     expect(
@@ -259,9 +245,7 @@ describe('About the Redux CRUD factory actions/reducer usage.', () => {
   test(`That the REMOVE_SELECTED action works together with the target reducer on an object input.
   `, () => {
     const {
-      actionCreators: {
-        nimbus9: {fruits: actions}
-      },
+      actionCreators: actions,
       reducers: {selectedIdsReducers}
     } = createEssentialsFor('fruits');
     expect(
@@ -275,9 +259,7 @@ describe('About the Redux CRUD factory actions/reducer usage.', () => {
   test(`That the REMOVE_SELECTED action works together with the target reducer on an array input.
   `, () => {
     const {
-      actionCreators: {
-        nimbus9: {fruits: actions}
-      },
+      actionCreators: actions,
       reducers: {selectedIdsReducers}
     } = createEssentialsFor('fruits');
     expect(
