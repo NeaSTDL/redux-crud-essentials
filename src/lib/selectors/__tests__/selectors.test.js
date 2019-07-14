@@ -28,6 +28,7 @@ describe('The "selectorsFor" factory function', () => {
     expect(byIdentifier).toBeDefined();
     expect(typeof byIdentifier).toEqual('function');
   });
+
   describe('using default "id" as identifier', () => {
     const fromFruitsSelect = selectorsFor('fruits');
     describe('constructs an "all" selector', () => {
@@ -70,6 +71,7 @@ describe('The "selectorsFor" factory function', () => {
       });
     });
   });
+
   describe('using "_id" as identifier', () => {
     const fromPersonsSelect = selectorsFor('persons', {identifier: '_id'});
     describe('constructs an "all" selector', () => {
