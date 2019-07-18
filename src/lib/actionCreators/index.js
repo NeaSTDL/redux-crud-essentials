@@ -27,6 +27,7 @@ function toEntitiesIDArray(payload, identifier) {
 
 const entitiesStoreActionCreators = identifier => ({
   [ACTION_TYPES.CREATE]: payload => toEntitiesMap(payload, identifier),
+  [ACTION_TYPES.READ]: payload => toEntitiesMap(payload, identifier),
   [ACTION_TYPES.UPDATE]: payload => toEntitiesMap(payload, identifier),
   [ACTION_TYPES.DELETE]: payload => toEntitiesIDArray(payload, identifier)
 });
@@ -40,6 +41,17 @@ const selectedIdsStoreActionsCreators = identifier => ({
     toEntitiesIDArray(payload, identifier)
 });
 
+const networkStoreActionCreators = () => ({
+  [ACTION_TYPES.SET_IS_FETCHING]: [
+    payload => payload,
+    (payload, reset = false) => ({reset})
+  ],
+  [ACTION_TYPES.SET_ERROR]: [
+    payload => payload,
+    (payload, reset = false) => ({reset})
+  ]
+});
+
 /**
  * A factory to create a set of action creator functions for a specific Redux entity.
  * @param {string} entityName A name for the entity to be used with the returned action creators.
@@ -47,7 +59,7 @@ const selectedIdsStoreActionsCreators = identifier => ({
  * @param {object} options A configuration settings collection to modify the library behavior.
  * @returns {object} A set of action creator functions for a specific Redux entity.
  */
-export function actionCreatorsFor(
+export default function actionCreatorsFor(
   entityName,
   namespace,
   options = defaultOpts
@@ -56,7 +68,8 @@ export function actionCreatorsFor(
   const entityActionMap = {
     [entityName]: {
       ...entitiesStoreActionCreators(identifier),
-      ...selectedIdsStoreActionsCreators(identifier)
+      ...selectedIdsStoreActionsCreators(identifier),
+      ...networkStoreActionCreators()
     }
   };
   const entityActionCreators = namespace

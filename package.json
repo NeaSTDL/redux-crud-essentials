@@ -45,7 +45,8 @@
       "expect",
       "describe",
       "beforeEach",
-      "it"
+      "it",
+      "jest"
     ],
     "prettier": {
       "trailingComma": "all"

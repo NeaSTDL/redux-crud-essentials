@@ -10,7 +10,7 @@ import createAllSelectedIdsSelector from './operations/allSelected';
  * expected behavior.
  * @returns {object} A map of selector operations.
  */
-export function selectorsFor(entityName, options = defaultOptions) {
+export default function selectorsFor(entityName, options = defaultOptions) {
   return {
     all: createAllSelector(entityName, options),
     allSelected: createAllSelectedIdsSelector(entityName, options),

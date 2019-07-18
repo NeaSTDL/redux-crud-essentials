@@ -6,7 +6,7 @@ import ACTION_TYPES from '../constants/actionTypes';
  * @param {string} namespace A name for the construction's namespace.
  * @returns {object} An object containing the constructed set of action types.
  */
-export function actionTypesFor(entityName, namespace) {
+export default function actionTypesFor(entityName, namespace) {
   const prefix = namespace ? `${namespace}/${entityName}` : entityName;
   return Object.keys(ACTION_TYPES).reduce((actions, ACTION_TYPE) => {
     actions[ACTION_TYPE] = `${prefix}/${ACTION_TYPE}`;

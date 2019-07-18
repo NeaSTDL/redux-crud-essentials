@@ -1,4 +1,4 @@
-import {reducersFor} from '..';
+import reducersFor from '..';
 
 describe('The selectedIdsReducers factory', () => {
   const {selectedIdsReducers} = reducersFor('fruits');

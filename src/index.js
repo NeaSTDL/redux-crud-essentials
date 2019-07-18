@@ -1,7 +1,8 @@
-import {actionCreatorsFor} from './lib/actionCreators';
-import {selectorsFor} from './lib/selectors';
-import {reducersFor} from './lib/reducers';
-import {actionTypesFor} from './lib/actionTypes';
+import actionCreatorsFor from './lib/actionCreators';
+import selectorsFor from './lib/selectors';
+import reducersFor from './lib/reducers';
+import actionTypesFor from './lib/actionTypes';
+import thunksFor from './lib/thunks';
 import defaultOpts from './lib/constants/defaultOptions';
 
 /**
@@ -15,7 +16,8 @@ export function createReduxUtils(settings) {
     actionTypes: actionTypesFor(entityName, namespace),
     actionCreators: actionCreatorsFor(entityName, namespace, opts),
     reducers: reducersFor(entityName, namespace),
-    selectors: selectorsFor(entityName, opts)
+    selectors: selectorsFor(entityName, opts),
+    thunks: thunksFor(entityName, namespace, opts)
   };
 }
 
