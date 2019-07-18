@@ -1,5 +1,5 @@
 import defaultState from '../../constants/defaultState';
-import {reducersFor} from '..';
+import reducersFor from '..';
 
 describe('The entitiesReducer factory', () => {
   const {entitiesReducers} = reducersFor('fruits');

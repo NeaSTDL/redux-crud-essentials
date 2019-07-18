@@ -1,4 +1,8 @@
 {
   "entities": {},
-  "selectedIds": []
+  "selectedIds": [],
+  "network": {
+    "isFetching": false,
+    "error": null
+  }
 }

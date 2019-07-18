@@ -1,4 +1,4 @@
-import {selectorsFor} from '..';
+import selectorsFor from '..';
 
 const dummyState = {
   fruits: {

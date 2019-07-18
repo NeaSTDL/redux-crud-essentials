@@ -1,4 +1,4 @@
-import {actionCreatorsFor} from '..';
+import actionCreatorsFor from '..';
 
 describe('The actionCreator functions for "selectedIds" store', () => {
   describe('created with a NULL "namespace"', () => {
