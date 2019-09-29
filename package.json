@@ -6,7 +6,11 @@
   "scripts": {
     "test": "xo && jest --passWithNoTests",
     "test:watch": "jest --watch",
-    "build": "yarn test && webpack --config webpack.config.js"
+    "build": "webpack --config webpack.config.js",
+    "make": "yarn test && yarn build",
+    "release": "np",
+    "prepublishOnly": "yarn build",
+    "postpublish": "rm -rf ./dist/"
   },
   "repository": {
     "type": "git",
@@ -35,6 +39,7 @@
   },
   "dependencies": {
     "lodash": "^4.17.11",
+    "np": "^5.1.0",
     "redux-actions": "^2.6.5",
     "reselect": "^4.0.0"
   },

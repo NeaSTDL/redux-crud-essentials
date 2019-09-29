@@ -24,6 +24,17 @@ This project uses xo.js to follow general accepted conventions on code writing.
 ## How to use
   (To be written)
 
+## Version release
+To publish a new release, it would be necessary to:
+  - Be logged with an authorized account for the NPM repository.
+  - Make sure that all tests are passing properly.
+
+To execute the process, run:
+
+```
+  yarn release
+```
+
 ## Contribute
   (To be written)
 
