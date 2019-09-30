@@ -1,6 +1,6 @@
 {
   "name": "redux-crud-essentials",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "A specialized functional factory to construct elemental CRUD operation's facilities for Redux implementations.",
   "main": "dist/main.js",
   "scripts": {
